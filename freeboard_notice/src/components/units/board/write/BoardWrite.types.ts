@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, RefObject } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardWriteProps {
@@ -16,12 +16,28 @@ export interface IBoardWriteUIProps {
   onClickMoveToBoard: () => void;
   onClickUpdate: () => void;
   onClickNotice: () => void;
-  handleComplete: () => void;
+  handleComplete: (value: any) => void;
   onToggleModal: any;
   data?: Pick<IQuery, "fetchBoard">;
-  isOpen: boolean;
+  isOpen?: boolean;
   isEdit: boolean;
-  open: boolean;
+  open?: boolean;
+  input: {
+    name: string;
+    password: string;
+    title: string;
+    contents: string;
+    youtubeUrl: string;
+    boardAddress: {
+      boardAddress: string;
+      boardAddressDetail: string;
+      boardZipcode: string;
+    };
+  };
+  imgUrl: string[];
+  FileRef: RefObject<HTMLInputElement>;
+  onClickUpload: () => void;
+  onChangeFileUrls: (imgUrlIndex: string, index: number) => void;
 }
 
 export interface IBoardWriteInput {

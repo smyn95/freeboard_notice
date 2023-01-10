@@ -14,7 +14,7 @@ export default function BoardCommentList() {
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
-    variables: { boardId: router.query.boardId },
+    variables: { boardId: String(router.query.boardId) },
   });
 
   const onLoadMore = () => {

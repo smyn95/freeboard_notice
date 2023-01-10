@@ -1,8 +1,12 @@
 import * as S from "../../../../../styles/freeboard";
-export default function BoardListMap({ data, onClickMoveToBoardDetail }) {
+import { IBoardListMapProps } from "./BoardList.types";
+export default function BoardListMap({
+  data,
+  onClickMoveToBoardDetail,
+}: IBoardListMapProps) {
   return (
     <>
-      {data?.fetchBoards.map((el, index) => (
+      {data?.fetchBoards.map((el: any, index: number) => (
         <S.Listfirst key={el._id}>
           <S.Listtitle>
             <li>{index + 1}</li>

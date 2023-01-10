@@ -33,8 +33,8 @@ interface IFormData {
 
 export default function ReactHookFormPage() {
   const router = useRouter();
-  const focusJoinRef = useRef();
-  const profileImg = useRef();
+  const focusJoinRef = useRef<HTMLInputElement>();
+  const profileImg = useRef<HTMLInputElement>();
   const [input, setInput] = useState("");
   const { register, handleSubmit, formState } = useForm<IFormData>({
     resolver: yupResolver(schema),
@@ -63,35 +63,34 @@ export default function ReactHookFormPage() {
       SuccessModal("회원가입이 완료되었습니다.");
       void router.push("/");
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
   };
 
-  // const { ref, ...rest } = register;
   console.log(input);
   return (
     <S.Join>
       <S.Title>SIGN UP</S.Title>
       <div className="contents">
         <S.JoinForm onSubmit={handleSubmit(onClickJoin)}>
-          <S.FormInput onChange={(e) => setInput(e.target.value)}>
+          <S.FormInput onChange={(e: any) => setInput(e.target.value)}>
             <input type="text" {...register("email")} />
             <div>{formState.errors.email?.message}</div>
-            <S.FormLabel onClickLabel={onClickLabel}>이메일*</S.FormLabel>
+            <S.FormLabel onClick={onClickLabel}>이메일*</S.FormLabel>
           </S.FormInput>
-          <S.FormInput onChange={(e) => setInput(e.target.value)}>
+          <S.FormInput onChange={(e: any) => setInput(e.target.value)}>
             <input type="text" {...register("name")} />
             <div>{formState.errors.name?.message}</div>
-            <S.FormLabel onClickLabel={onClickLabel}>이름*</S.FormLabel>
+            <S.FormLabel onClick={onClickLabel}>이름*</S.FormLabel>
           </S.FormInput>
-          <S.FormInput onChange={(e) => setInput(e.target.value)}>
+          <S.FormInput onChange={(e: any) => setInput(e.target.value)}>
             <input type="password" {...register("password")} />
             <div>{formState.errors.password?.message}</div>
-            <S.FormLabel onClickLabel={onClickLabel}>비밀번호*</S.FormLabel>
+            <S.FormLabel onClick={onClickLabel}>비밀번호*</S.FormLabel>
           </S.FormInput>
 
           <S.FormFile>
-            <input type="file" ref={profileImg} />
+            <input type="file" ref={profileImg as any} />
             <S.ProfileUp onClick={onClickProfile}>
               <span>프로필 사진 등록</span>
             </S.ProfileUp>
@@ -100,10 +99,10 @@ export default function ReactHookFormPage() {
             댓글 등록시 나타납니다. 꼭 얼굴 사진이 아니여도 좋아요
           </S.Info>
           <S.PreviewImg>
-            <div class="img">
+            <div className="img">
               <span></span>
             </div>
-            <p class="fileName"></p>
+            <p className="fileName"></p>
           </S.PreviewImg>
 
           <S.BtnMorebx>

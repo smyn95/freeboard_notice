@@ -12,9 +12,8 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
-import { IBoardDetailUIProps } from "./BoardDetail.types";
 
-export default function Fetchboard(props: IBoardDetailUIProps) {
+export default function Fetchboard() {
   const router = useRouter();
   const [likeboard] = useMutation(LIKE_BOARD);
   const [deleteBoard] = useMutation(DELETE_BOARD);
@@ -23,15 +22,15 @@ export default function Fetchboard(props: IBoardDetailUIProps) {
     FETCH_BOARD,
     {
       fetchPolicy: "network-only",
-      variables: { boardId: router.query.boardId },
+      variables: { boardId: String(router.query.boardId) },
     }
   );
 
   const onClickMoveToBoard = () => {
-    router.push("/board/");
+    void router.push("/board/");
   };
   const goEdit = () => {
-    router.push(`/board/${router.query.boardId}/edit`);
+    void router.push(`/board/${router.query.boardId as string}/edit`);
   };
 
   const onClickLike = async () => {
@@ -59,19 +58,17 @@ export default function Fetchboard(props: IBoardDetailUIProps) {
   };
 
   const onClickDelete = async () => {
-    await deleteBoard(
-      {
-        variables: { boardId: router.query.boardId },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD,
-            variables: { boardId: router.query.boardId },
-          },
-        ],
-      },
-      SuccessModal("삭제가 완료되었습니다.")
-    );
-    router.push(`/board/`);
+    await deleteBoard({
+      variables: { boardId: router.query.boardId },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: { boardId: router.query.boardId },
+        },
+      ],
+    });
+    SuccessModal("삭제가 완료되었습니다.");
+    void router.push(`/board/`);
   };
 
   return (
@@ -86,5 +83,4 @@ export default function Fetchboard(props: IBoardDetailUIProps) {
       />
     </>
   );
-  //부모에게는 return이 꼭 있어야함
 }

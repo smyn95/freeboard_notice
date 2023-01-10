@@ -69,7 +69,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
         ],
       });
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
 
     setWriter("");
@@ -108,7 +108,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       });
       props.setIsEdit?.(false);
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
   };
 

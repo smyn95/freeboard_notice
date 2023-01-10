@@ -41,7 +41,7 @@ export const FormInput = styled.span`
       font-size: 12px;
     }
     & ~ label {
-      transform: ${(props) =>
+      transform: ${(props: any) =>
         props.email || props.name || props.password
           ? "translate(0, -30px)"
           : ""};

@@ -1,17 +1,15 @@
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { ErrorModal, SuccessModal } from "../../../../commons/index";
 
-import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardWrite.query";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.query";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { IBoardWriteProps } from "./BoardWrite.types";
 import {
   IMutation,
   IMutationCreateBoardArgs,
   IMutationUpdateBoardArgs,
-  IQuery,
-  IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
 
 export default function Freeboard(props: IBoardWriteProps) {
@@ -42,20 +40,12 @@ export default function Freeboard(props: IBoardWriteProps) {
     IMutationUpdateBoardArgs
   >(UPDATE_BOARD);
 
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
-    FETCH_BOARD,
-    {
-      variables: { boardId: router.query.boardId },
-    }
-  );
-
-  //수정하기 함수
   const onClickUpdate = async () => {
     const currentFiles = JSON.stringify(imgUrl);
     const defaultFiles = JSON.stringify(props.data?.fetchBoard.images);
     const isChangedFiles = currentFiles !== defaultFiles;
 
-    const myvariables = {
+    const myvariables: any = {
       boardId: router.query.boardId,
       password: input.password,
       updateBoardInput: {},
@@ -75,9 +65,11 @@ export default function Freeboard(props: IBoardWriteProps) {
 
       // 2. 상세페이지로 이동하기
       SuccessModal("게시글 수정이 완료되었습니다.");
-      router.push(`/board/${result.data.updateBoard._id}`);
+      void router.push(
+        `/board/${result.data?.updateBoard ? result.data.updateBoard._id : 0}`
+      );
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
   };
 
@@ -102,10 +94,11 @@ export default function Freeboard(props: IBoardWriteProps) {
         },
       });
       SuccessModal("게시글 등록이 완료되었습니다.");
-      // 우리 보기 좋으라고 있는거
-      void router.push(`/board/${result.data.createBoard._id}`);
+      void router.push(
+        `/board/${result.data?.createBoard ? result.data.createBoard._id : 0}`
+      );
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
   };
 
@@ -136,16 +129,14 @@ export default function Freeboard(props: IBoardWriteProps) {
     setInput({ ...input, youtubeUrl: event.target.value });
   };
 
-  //취소하기를 누르면 목록 페이지가 나오는 로직
   const onClickMoveToBoard = () => {
-    router.push("/board/");
+    void router.push("/board/");
   };
-  //주소검색
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const handleComplete = (value) => {
+  const handleComplete = (value: any) => {
     onToggleModal();
     setInput({
       ...input,
@@ -159,7 +150,7 @@ export default function Freeboard(props: IBoardWriteProps) {
     console.log(value);
   };
 
-  const onChangeFileUrls = (imgUrlIndex: String, index: number) => {
+  const onChangeFileUrls = (imgUrlIndex: string, index: number) => {
     const newImgUrl = [...imgUrl];
     newImgUrl[index] = imgUrlIndex;
     setimgUrl(newImgUrl);
@@ -172,7 +163,7 @@ export default function Freeboard(props: IBoardWriteProps) {
   }, [props.data]);
 
   const onClickUpload = () => {
-    FileRef.current.click();
+    FileRef.current?.click();
   };
 
   return (

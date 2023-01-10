@@ -59,9 +59,8 @@ export default function BoardCommentListUIItem(
   const onChangeDeletePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setMyPassword(event.target.value);
   };
-  const cancel = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e);
-    message.error("Click on No");
+  const cancel = () => {
+    void message.error("Click on No");
   };
   return (
     <>

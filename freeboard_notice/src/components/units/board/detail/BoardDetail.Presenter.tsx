@@ -1,6 +1,7 @@
 import * as S from "../../../../../styles/fetchboard";
 import { Tooltip } from "antd";
 import ReactPlayer from "react-player";
+import { IBoardDetailUIProps } from "./BoardDetail.types";
 
 export default function BoardDetailUI({
   data,
@@ -9,8 +10,7 @@ export default function BoardDetailUI({
   onClickLike,
   onClickDisLike,
   onClickDelete,
-}) {
-  console.log(data);
+}: IBoardDetailUIProps) {
   return (
     <S.Board>
       <S.Box>

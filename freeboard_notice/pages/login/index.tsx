@@ -1,5 +1,5 @@
 import * as S from "./loginStyles";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, MouseEventHandler, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { ErrorModal, SuccessModal } from "../../src/commons";
 import { useRecoilState } from "recoil";
@@ -18,14 +18,19 @@ const LOGIN_USER = gql`
   }
 `;
 
-export default function LoginPage(props) {
+interface ILoginProps {
+  onclickIsOpne: MouseEventHandler<HTMLImageElement> | undefined;
+  email: string;
+}
+
+export default function LoginPage(props: ILoginProps) {
   const router = useRouter();
-  const focusRef = useRef();
+  const focusRef = useRef<HTMLInputElement>();
   const [email, setEmail] = useState("");
   const [EmailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setAccessToken] = useRecoilState(accessTokenState);
   const [isLogin, setIsLogin] = useRecoilState(isLoginState);
 
   const [loginUser] = useMutation<
@@ -68,12 +73,12 @@ export default function LoginPage(props) {
         return;
       }
       // setAccessToken(accessToken);
-      localStorage.setItem("accessToken", accessToken); //임시 사용 (나중에 지울 예정)
+      localStorage.setItem("accessToken", accessToken);
       SuccessModal("로그인에 성공하였습니다.");
       setAccessToken(accessToken);
       setIsLogin(!isLogin);
     } catch (error) {
-      ErrorModal(error.message);
+      ErrorModal(error as string);
     }
   };
   return (

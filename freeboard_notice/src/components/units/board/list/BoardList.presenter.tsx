@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import * as S from "../../../../../styles/freeboard";
 import Link from "next/link";
 import BoardListMap from "./BoardList.map";
 import { Space } from "antd";
-import LayoutBanner from "../../../commons/layout/banner";
 import Search from "antd/lib/transfer/search";
 import PaginationPage from "../../../commons/pagination";
+import { IBoardListUIProps } from "./BoardList.types";
 
 export default function BoardListUI({
   data,
@@ -15,7 +16,7 @@ export default function BoardListUI({
   onClickPage,
   onChangeSearch,
   onClickSearch,
-}) {
+}: IBoardListUIProps) {
   return (
     <>
       <S.Box>

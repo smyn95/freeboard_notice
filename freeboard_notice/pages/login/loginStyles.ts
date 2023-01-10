@@ -28,6 +28,7 @@ export const BgLayer = styled.div`
   z-index: 20;
 `;
 export const LoginForm = styled.form``;
+
 export const FormInput = styled.div`
   display: block;
   position: relative;
@@ -50,7 +51,7 @@ export const FormInput = styled.div`
       font-size: 12px;
     }
     & ~ label {
-      transform: ${(props) =>
+      transform: ${(props: any) =>
         props.email || props.password ? "translate(0, -30px)" : ""};
     }
   }
