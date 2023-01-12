@@ -146,8 +146,6 @@ export default function Freeboard(props: IBoardWriteProps) {
         boardAddress: value.address,
       },
     });
-
-    console.log(value);
   };
 
   const onChangeFileUrls = (imgUrlIndex: string, index: number) => {

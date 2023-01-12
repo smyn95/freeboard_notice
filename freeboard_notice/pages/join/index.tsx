@@ -1,8 +1,8 @@
-import { CREATE_USER } from "./join.query";
+import { CREATE_USER } from "../../src/components/units/board/auth/join/join.query";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import * as S from "./joinStyles";
+import * as S from "../../src/components/units/board/auth/join/join.Styles";
 import { useMutation } from "@apollo/client";
 import {
   IMutation,
@@ -35,7 +35,7 @@ export default function ReactHookFormPage() {
   const router = useRouter();
   const focusJoinRef = useRef<HTMLInputElement>();
   const profileImg = useRef<HTMLInputElement>();
-  const [input, setInput] = useState("");
+  const [, setInput] = useState("");
   const { register, handleSubmit, formState } = useForm<IFormData>({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -67,7 +67,6 @@ export default function ReactHookFormPage() {
     }
   };
 
-  console.log(input);
   return (
     <S.Join>
       <S.Title>SIGN UP</S.Title>

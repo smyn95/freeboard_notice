@@ -1,7 +1,8 @@
 import { PlusOutlined } from "@ant-design/icons";
 import * as S from "./Uploads01.styles";
+import { IUploadPropsUI } from "./Uploads01.types";
 
-export default function Uploads01UI(props) {
+export default function Uploads01UI(props: IUploadPropsUI) {
   return (
     <>
       {props.imgUrlIndex ? (

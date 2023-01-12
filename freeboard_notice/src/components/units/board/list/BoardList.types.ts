@@ -1,4 +1,4 @@
-import { FormEvent, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IBoardListProps {
@@ -14,7 +14,7 @@ export interface IBoardListUIProps {
   onClickMoveToBoardDetail: (event: MouseEvent<HTMLLIElement>) => void;
   RangePicker: any;
   onClickPage: (event: MouseEvent<HTMLLIElement>) => void;
-  onChangeSearch: (event: FormEvent<HTMLElement>) => void;
+  onChangeSearch: any;
   onClickSearch: () => void;
 }
 

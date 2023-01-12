@@ -7,9 +7,9 @@ import * as S from "../../styles/starbucks";
 
 export default function MainPage() {
   const [data, setData] = useState(menuList.slice(0, 12));
-  const [menu, setMenu] = useState([{ name: "Drink" }, { name: "Food" }]);
+  const [menu] = useState([{ name: "Drink" }, { name: "Food" }]);
 
-  const onMenu = (name) => {
+  const onMenu = (name: string) => {
     if (name === "all") {
       setData(menuList);
     } else {

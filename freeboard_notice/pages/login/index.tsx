@@ -1,4 +1,4 @@
-import * as S from "./loginStyles";
+import * as S from "../../src/components/units/board/auth/login/login.Styles";
 import { ChangeEvent, MouseEventHandler, useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { ErrorModal, SuccessModal } from "../../src/commons";
@@ -20,12 +20,12 @@ const LOGIN_USER = gql`
 
 interface ILoginProps {
   onclickIsOpne: MouseEventHandler<HTMLImageElement> | undefined;
-  email: string;
+  email?: string;
 }
 
 export default function LoginPage(props: ILoginProps) {
   const router = useRouter();
-  const focusRef = useRef<HTMLInputElement>();
+  const focusRef = useRef<any>();
   const [email, setEmail] = useState("");
   const [EmailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -106,7 +106,7 @@ export default function LoginPage(props: ILoginProps) {
                     type="text"
                     name="tbuser_id"
                     onChange={onChangeEmail}
-                    required=""
+                    required={true}
                     ref={focusRef}
                   />
                   <label onClick={onClickLabel}>Email</label>
@@ -117,7 +117,7 @@ export default function LoginPage(props: ILoginProps) {
                     type="password"
                     name="tbuser_pw"
                     onChange={onChangePassword}
-                    required=""
+                    required={true}
                     ref={focusRef}
                   />
                   <label onClick={onClickLabel}>passWord</label>

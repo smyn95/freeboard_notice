@@ -12,8 +12,6 @@ export default function Home() {
       setLoding(false);
       void router.push("/main");
     }, 2800);
-
-    return;
   }, []);
 
   return (

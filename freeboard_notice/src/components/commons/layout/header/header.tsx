@@ -9,18 +9,18 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import LoginPage from "../../../../../pages/login";
 import { accessTokenState, isLoginState } from "../../../../commons/store";
-
 import * as S from "../../../../commons/styles";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { useMoveToPage } from "../../hooks/useMoveToPage";
 import { FETCH_USER_LOGGED_IN } from "../layout.query";
+import { IHeaderProps } from "../layouy.types";
 
-export default function LayoutHeader(props) {
+export default function LayoutHeader(props: IHeaderProps) {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   const [myPage, setMyPage] = useState(false);
   const [isLogin, setIsLogin] = useRecoilState(isLoginState);
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [accessToken] = useRecoilState(accessTokenState);
 
   const { onClickMoveToPage } = useMoveToPage();
 
@@ -41,7 +41,6 @@ export default function LayoutHeader(props) {
           </S.Logo>
           <S.Navi>
             <S.Navibx>
-              {/* <li className="all_menue">전체메뉴</li> */}
               <li onClick={onClickMoveToPage("/product/new")}>게시글 등록</li>
               <li onClick={onClickMoveToPage("/board")}>게시판</li>
             </S.Navibx>
@@ -50,9 +49,9 @@ export default function LayoutHeader(props) {
             {accessToken ? (
               <>
                 <S.UserImg src="/avatar.png" alt="유저아이콘"></S.UserImg>
-                <S.LoginName>{`${data?.fetchUserLoggedIn.name}`}</S.LoginName>
+                <S.LoginName>{data?.fetchUserLoggedIn.name}</S.LoginName>
                 <S.MyPage>
-                  <CaretDownOutlined onClick={onClickMyPage} myPage={myPage} />
+                  <CaretDownOutlined onClick={onClickMyPage} />
                   {myPage && (
                     <S.MyPageTrue>
                       <div>
@@ -61,7 +60,7 @@ export default function LayoutHeader(props) {
                           alt="유저아이콘"
                         ></S.UserImg>
                         <S.UserPage>
-                          {`${data?.fetchUserLoggedIn.name}`}
+                          {data?.fetchUserLoggedIn.name}
                           <p>0 &nbsp;P</p>
                         </S.UserPage>
                       </div>

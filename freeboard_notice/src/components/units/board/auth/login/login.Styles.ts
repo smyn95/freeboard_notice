@@ -29,7 +29,7 @@ export const BgLayer = styled.div`
 `;
 export const LoginForm = styled.form``;
 
-export const FormInput = styled.div`
+export const FormInput: any = styled.div`
   display: block;
   position: relative;
   text-align: center;

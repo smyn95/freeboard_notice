@@ -3,7 +3,7 @@ import FreeboardList from "../../src/components/units/board/list/BoardList.conta
 export default function FreeboardListPage() {
   return (
     <>
-      <FreeboardList isEdit={false} />
+      <FreeboardList />
     </>
   );
 }

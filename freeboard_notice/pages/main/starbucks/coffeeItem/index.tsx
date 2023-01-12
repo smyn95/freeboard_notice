@@ -1,7 +1,7 @@
 import * as S from "../../../../styles/starbucks";
 
-export default function CoffeeItem({ item }) {
-  const { id, img, name, title, price, desc } = item;
+export default function CoffeeItem({ item }: any) {
+  const { img, title } = item;
   return (
     <>
       <S.ListOver>

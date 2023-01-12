@@ -14,13 +14,13 @@ const FETCH_BOARDS_COUNT = gql`
   }
 `;
 
-export default function PaginationPage({ onClickPage }) {
+export default function PaginationPage({ onClickPage }: any) {
   const { data: dataBoardsCount } = useQuery<
     Pick<IQuery, "fetchBoardsCount">,
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
 
-  const lastPage = dataBoardsCount != null && dataBoardsCount.fetchBoardsCount;
+  const lastPage = dataBoardsCount?.fetchBoardsCount;
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function PaginationPage({ onClickPage }) {
           }
           if (type === "page") {
             return (
-              <li onClick={onClickPage} id={page}>
+              <li onClick={onClickPage} id={String(page)}>
                 {page}
               </li>
             );

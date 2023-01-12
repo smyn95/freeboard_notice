@@ -4,14 +4,13 @@ import { DatePicker } from "antd";
 import "antd/dist/antd.css";
 import { useRouter } from "next/router";
 import { FETCH_BOARDS, FETCH_BOARDS_OF_THE_BEST } from "./BoardList.query";
-import { IBoardListProps } from "./BoardList.types";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "../../../../commons/types/generated/types";
 
-export default function FreeboardList(props: IBoardListProps) {
+export default function FreeboardList() {
   const router = useRouter();
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
