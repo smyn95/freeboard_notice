@@ -4,6 +4,7 @@ export const MenuBox = styled.div``;
 
 // 메인 웨이브글자
 export const WordWaves = styled.div`
+  position: relative;
   width: 100%;
   padding: 30px 0;
   span {

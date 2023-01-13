@@ -5,7 +5,7 @@ import LayoutSubBanner from "./subBanner";
 import { useRecoilState } from "recoil";
 import { isLoginState } from "../../../commons/store";
 
-const HIDDEN_BANNER = ["/main", "/", "/join"];
+const HIDDEN_BANNER = ["/board", "/", "/join"];
 const HIDDEN_RANDING = ["/"];
 
 export default function Layout(props: any) {

@@ -20,7 +20,12 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/units/board/write/BoardWrite.Container.js",
-    "src/components/commons/validationFile"
+    "src/components/commons/validationFile",
+    "pages/main/starbucks/index.tsx",
+    "pages/main/starbucks/menuItem/index.tsx",
+    "pages/main/starbucks/coffeeList/index.tsx",
+    "pages/main/starbucks/coffeeItem/index.tsx",
+    "pages/main/index.js"
   ],
   "exclude": ["node_modules"]
 }
