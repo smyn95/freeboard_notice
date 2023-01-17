@@ -201,9 +201,9 @@ export const Material = styled.div`
     cursor: pointer;
   }
 `;
-//HEADER -End
+// HEADER -End
 
-//BANNER
+// BANNER
 export const Visual = styled.div`
   background: url("/main_bg.jpeg") no-repeat 50% 50%;
   background-size: cover;
@@ -281,9 +281,9 @@ export const Set01 = styled.img`
   max-width: 294px;
 `;
 
-//BANNER -End
+// BANNER -End
 
-//Badge
+// Badge
 export const Badges = styled.div`
   position: fixed;
   right: 12px;
@@ -299,9 +299,9 @@ export const Badge = styled.div`
   box-shadow: 4px 4px 10px, rgb(0 0 0 / 15%);
   cursor: pointer;
 `;
-//Badge End
+// Badge End
 
-//subBanner
+// subBanner
 export const SubBanner01 = styled.div`
   background: url("/subBanner.png") no-repeat 50% 50%;
   background-size: cover;
@@ -313,10 +313,12 @@ export const SubBanner02 = styled.div`
   height: 300px;
 `;
 
-//subBanner End
+// subBanner End
 
-//랜딩페이지
+// 랜딩페이지
 export const Randing = styled.div`
+  display: flex;
+  justify-content: center;
   img {
     display: block;
     margin: auto;

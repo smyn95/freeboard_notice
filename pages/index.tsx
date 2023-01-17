@@ -23,8 +23,8 @@ export default function Home() {
             <Image
               src="/randing.png"
               alt="스타벅스로고"
-              width={110}
-              height={100}
+              width={800}
+              height={800}
             />
           </S.Randing>
           <S.Container>

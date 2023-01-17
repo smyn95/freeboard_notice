@@ -39,7 +39,7 @@ export default function Layout(props: any) {
         />
       )}
 
-      {!isHiddenBanner && <LayoutSubBanner />}
+      {isHiddenBanner && <LayoutSubBanner />}
       <div>{props.children}</div>
     </>
   );
