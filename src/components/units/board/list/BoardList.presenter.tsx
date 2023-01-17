@@ -6,6 +6,7 @@ import { Space } from "antd";
 import Search from "antd/lib/transfer/search";
 import PaginationPage from "../../../commons/pagination";
 import { IBoardListUIProps } from "./BoardList.types";
+import Image from "next/image";
 
 export default function BoardListUI({
   data,
@@ -25,13 +26,14 @@ export default function BoardListUI({
           {bestData?.fetchBoardsOfTheBest.map((best: any) => (
             <S.Listbx key={best._id}>
               <S.Topbx>
-                <img
+                <S.TopbxImg
                   className="scale"
                   src={
                     (best.images[0] &&
                       `https://storage.googleapis.com/${best.images[0]}`) ||
                     `/no-image.png`
                   }
+                  alt="베스트상품 이미지"
                 />
               </S.Topbx>
               <S.Bottombx className="animation">
@@ -41,14 +43,19 @@ export default function BoardListUI({
                     <S.Flex>
                       <div>
                         <S.Userbx>
-                          <S.User src="avatar.png" alt="유저아이콘"></S.User>
+                          <S.User src="/avatar.png" alt="유저아이콘" />
                           <S.Listname>{best.writer.slice(0, 6)}</S.Listname>
                         </S.Userbx>
                         <S.Listdate>{best.createdAt.slice(0, 10)}</S.Listdate>
                       </div>
 
                       <S.Listlike>
-                        <img src="/like.png" alt="좋아요아이콘"></img>
+                        <Image
+                          src="/like.png"
+                          alt="좋아요아이콘"
+                          width={25}
+                          height={25}
+                        />
                         <S.Likecount>{best.likeCount}</S.Likecount>
                       </S.Listlike>
                     </S.Flex>

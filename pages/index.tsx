@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import * as S from "../src/commons/styles";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -12,14 +13,19 @@ export default function Home() {
       setLoding(false);
       void router.push("/board");
     }, 2800);
-  }, []);
+  }, [router]);
 
   return (
     <>
       {loding ? (
         <div className={styles.container}>
           <S.Randing>
-            <img src="/randing.png" alt="스타벅스로고" />
+            <Image
+              src="/randing.png"
+              alt="스타벅스로고"
+              width={110}
+              height={100}
+            />
           </S.Randing>
           <S.Container>
             <span>L</span>

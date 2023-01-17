@@ -2,6 +2,7 @@ import * as S from "../../../../../styles/fetchboard";
 import { Tooltip } from "antd";
 import ReactPlayer from "react-player";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
+import Image from "next/image";
 
 export default function BoardDetailUI({
   data,
@@ -17,7 +18,12 @@ export default function BoardDetailUI({
         <div id="Head">
           <S.Left>
             <S.Leftbx>
-              <img src="/avatar.png" style={{ height: "60px" }} />
+              <Image
+                src="/avatar.png"
+                alt="유저 아이콘"
+                width={60}
+                height={60}
+              />
               <S.Namebx>
                 <S.Name>
                   {data ? data.fetchBoard.writer : "로딩중입니다..."}

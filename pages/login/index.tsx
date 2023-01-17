@@ -9,6 +9,7 @@ import {
 } from "../../src/commons/types/generated/types";
 import { accessTokenState, isLoginState } from "../../src/commons/store";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -86,17 +87,20 @@ export default function LoginPage(props: ILoginProps) {
       <S.BgLayer>
         <S.LoginModal>
           <S.BtnX>
-            <img
+            <Image
               onClick={props.onclickIsOpne}
               src="/ico_close.png"
               alt="close 아이콘"
+              width={30}
+              height={30}
             />
           </S.BtnX>
           <div>
-            <img
+            <Image
               src="/ico_window.png"
               alt="로고 아이콘"
-              style={{ width: "40px", marginBottom: "50px" }}
+              width={40}
+              height={49}
             />
             <S.LoginForm>
               <div>

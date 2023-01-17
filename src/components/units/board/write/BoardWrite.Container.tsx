@@ -156,7 +156,7 @@ export default function Freeboard(props: IBoardWriteProps) {
 
   useEffect(() => {
     if (props.data?.fetchBoard.images?.length) {
-      setimgUrl([...props.data?.fetchBoard.images]);
+      setimgUrl([...(props.data?.fetchBoard.images ?? "")]);
     }
   }, [props.data]);
 

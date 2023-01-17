@@ -227,6 +227,7 @@ export const Listbx = styled.div`
     color: #fff;
   }
 `;
+export const TopbxImg = styled.img``;
 export const Topbx = styled.div`
   width: 300px;
   height: 240px;

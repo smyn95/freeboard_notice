@@ -27,7 +27,10 @@ export const BgLayer = styled.div`
   height: 100vh;
   z-index: 20;
 `;
-export const LoginForm = styled.form``;
+
+export const LoginForm = styled.form`
+  margin-top: 50px;
+`;
 
 export const FormInput: any = styled.div`
   display: block;

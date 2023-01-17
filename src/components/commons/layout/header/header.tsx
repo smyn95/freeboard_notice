@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { useQuery } from "@apollo/client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
@@ -36,7 +37,12 @@ export default function LayoutHeader(props: IHeaderProps) {
         <S.Header>
           <S.Logo>
             <Link href="/main">
-              <img src="/maket_logo.png" alt="shinmimall 로고" />
+              <Image
+                src="/maket_logo.png"
+                alt="shinmimall 로고"
+                width={110}
+                height={100}
+              />
             </Link>
           </S.Logo>
           <S.Navi>
@@ -84,19 +90,28 @@ export default function LayoutHeader(props: IHeaderProps) {
                 alt="마이페이지 아이콘"
               />
             )}
-            <img src="/car.svg" alt="배송 아이콘" />
-            <img src="/cart.svg" alt="장바구니 아이콘" />
+            <Image
+              src="/cart.svg"
+              alt="장바구니 아이콘"
+              width={45}
+              height={45}
+            />
             <input type="text" />
             <S.Material onClick={props.onClickText}>
-              <img src="/search.png" alt="검색아이콘" />
+              <Image
+                src="/search.png"
+                alt="검색아이콘"
+                width={25}
+                height={25}
+              />
             </S.Material>
           </S.TopSearch>
           <S.Badges>
             <S.Badge>
-              <img src="/badge_01.png" alt="Badge" />
+              <Image src="/badge_01.png" alt="Badge" width={146} height={96} />
             </S.Badge>
             <S.Badge>
-              <img src="/badge_02.png" alt="Badge" />
+              <Image src="/badge_02.png" alt="Badge" width={146} height={96} />
             </S.Badge>
           </S.Badges>
         </S.Header>

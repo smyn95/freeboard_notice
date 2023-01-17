@@ -20,7 +20,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   useEffect(() => {
     const result = localStorage.getItem("accessToken");
     if (result) setAccessToken(result);
-  }, []);
+  }, [setAccessToken]);
 
   const uploadLink = createUploadLink({
     uri: "http://backend09.codebootcamp.co.kr/graphql",

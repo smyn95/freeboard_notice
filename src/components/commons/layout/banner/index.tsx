@@ -1,3 +1,4 @@
+import Image from "next/image";
 import * as S from "../../../../commons/styles";
 
 export default function LayoutBanner() {
@@ -6,10 +7,12 @@ export default function LayoutBanner() {
       <S.Visual>
         <S.BannerInner>
           <S.BannerTitle className="fade-in">
-            <img
+            <Image
               className="set04"
               src="/main_title.png"
               alt="AROUND AUTUMN, AROUND US"
+              width={333}
+              height={168}
             />
           </S.BannerTitle>
           <div>
